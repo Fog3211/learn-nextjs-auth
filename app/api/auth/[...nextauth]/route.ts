@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GitlibProvider from "next-auth/providers/gitlab"
+import GoogleProvider from "next-auth/providers/google"
 
 const ProviderList = [
   {
@@ -13,10 +14,14 @@ const ProviderList = [
     clientSecret: process.env.GITLAB_SECRET,
     provider: GitlibProvider
   },
+  {
+    clientId: process.env.GOOGLE_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    provider: GoogleProvider
+  },
 ]
 
-export const authOptions: NextAuthOptions = {
-
+const authOptions: NextAuthOptions = {
   providers: ProviderList
     .filter(u => (u.clientId && u.clientSecret))
     // @ts-ignore
@@ -24,6 +29,12 @@ export const authOptions: NextAuthOptions = {
       clientId: item.clientId,
       clientSecret: item.clientSecret,
     })),
+
+  pages: {
+    signIn: 'login',
+    signOut: 'logout',
+    newUser: 'register'
+  }
 }
 
 const handler = NextAuth(authOptions)

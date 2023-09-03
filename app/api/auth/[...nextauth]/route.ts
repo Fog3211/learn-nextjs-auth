@@ -32,8 +32,8 @@ const authOptions: NextAuthOptions = {
 
   pages: {
     signIn: 'login',
-    signOut: 'logout',
-    newUser: 'register'
+    // signOut: 'logout',
+    // newUser: 'register'
   }
 }
 

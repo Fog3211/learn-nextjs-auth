@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { Header } from "@/components/header";
 import { authOptions } from "@/config/auth";
+import Image from "next/image";
 
 export default async function Profile() {
   const session = await getServerSession(authOptions);
@@ -20,10 +21,12 @@ export default async function Profile() {
             ) : (
               <div className="flex items-center gap-8">
                 <div>
-                  <img
+                  <Image
                     src={user.image ? user.image : "/images/default.png"}
-                    className="max-h-36"
+                    className="max-h-36 rounded-full"
                     alt={`profile photo of ${user.name}`}
+                    width={144}
+                    height={144}
                   />
                 </div>
                 <div className="mt-8">

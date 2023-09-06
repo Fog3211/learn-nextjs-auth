@@ -9,25 +9,28 @@ const ProviderList = [
     clientId: process.env.GITHUB_ID,
     clientSecret: process.env.GITHUB_SECRET,
     provider: GithubProvider,
-    icon: 'https://authjs.dev/img/providers/github.svg'
+    icon: 'https://authjs.dev/img/providers/github.svg',
+    name: 'github'
   },
   {
     clientId: process.env.GITLAB_ID,
     clientSecret: process.env.GITLAB_SECRET,
     provider: GitlibProvider,
-    icon: 'https://authjs.dev/img/providers/gitlab.svg'
+    icon: 'https://authjs.dev/img/providers/gitlab.svg',
+    name: 'gitlab'
   },
   {
     clientId: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SECRET,
     provider: GoogleProvider,
-    icon: 'https://authjs.dev/img/providers/google.svg'
+    icon: 'https://authjs.dev/img/providers/google.svg',
+    name: 'google'
   },
 ]
 
 export const LoginIcons = ProviderList.map(u => ({
   icon: u.icon,
-  name: u.provider.name,
+  name: u.name,
 }))
 
 export const authOptions: NextAuthOptions = {
